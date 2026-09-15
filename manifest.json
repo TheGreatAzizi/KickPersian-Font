@@ -1,0 +1,44 @@
+﻿{
+  "manifest_version": 3,
+  "name": "Kick Persian - font",
+  "description": "فونت فارسی دلخواه برای کیک - 20+ فونت زیبا، وزن هوشمند و تشخیص دقیق‌تر",
+  "version": "1.0.0",
+  "author": "TheAzizi",
+  "homepage_url": "https://github.com/TheGreatAzizi",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "permissions": ["storage"],
+  "host_permissions": ["*://*.kick.com/*"],
+  "action": {
+    "default_title": "Kick Persian - font",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.kick.com/*"],
+      "js": ["fonts.js", "content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["fonts/*"],
+      "matches": ["*://*.kick.com/*"]
+    }
+  ]
+}

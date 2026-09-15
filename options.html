@@ -1,0 +1,311 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kick Persian - font | تنظیمات کامل</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0f0f0f;--card:#212121;--card2:#1a1a1a;--border:#2a2a2a;--border2:#303030;--red:#53FC18;--red2:#cc0000;--text:#f1f1f1;--muted:#9a9a9a;--muted2:#666}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Vazirmatn',Tahoma,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
+  svg{flex-shrink:0}
+  .navbar{
+    background:linear-gradient(135deg,var(--red) 0%,var(--red2) 100%);
+    padding:22px 16px;text-align:center;position:sticky;top:0;z-index:20;
+    box-shadow:0 4px 20px rgba(0,0,0,0.5)
+  }
+  .navbar h1{font-size:28px;font-weight:900;letter-spacing:0.3px;display:flex;align-items:center;justify-content:center;gap:10px}
+  .navbar h1 svg{width:26px;height:26px;fill:white}
+  .navbar p{font-size:12px;opacity:0.9;margin-top:4px}
+  .navbar .badge{display:inline-flex;align-items:center;gap:6px;margin-top:10px;background:rgba(0,0,0,0.22);padding:5px 14px;border-radius:20px;font-size:11px;font-weight:600;border:1px solid rgba(255,255,255,0.15)}
+  .navbar .badge svg{width:14px;height:14px;fill:white}
+  .container{max-width:1120px;margin:0 auto;padding:22px 16px}
+  .settings-bar{
+    background:var(--card);border:1px solid var(--border);border-radius:16px;
+    padding:16px;display:grid;grid-template-columns:148px 1fr 1fr 1fr;gap:12px;align-items:end;
+    margin-bottom:12px
+  }
+  .setting label{font-size:11px;color:var(--muted);font-weight:600;display:flex;align-items:center;gap:5px;margin-bottom:6px}
+  .setting label svg{width:12px;height:12px;fill:var(--muted)}
+  .setting select{width:100%;background:#0f0f0f;color:var(--text);border:1px solid var(--border2);border-radius:10px;padding:10px 12px;font-family:inherit;font-size:13px;outline:none;transition:.2s}
+  .setting select:focus{border-color:var(--red);background:#151515}
+  .toggle-wrap{
+    background:#0f0f0f;border:1px solid var(--border2);border-radius:12px;
+    padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;height:42px;align-self:end
+  }
+  .toggle-wrap span{font-size:13px;font-weight:700;display:flex;align-items:center;gap:6px}
+  .toggle-wrap span svg{width:16px;height:16px;fill:var(--muted)}
+  .switch{position:relative;width:42px;height:24px;cursor:pointer;flex-shrink:0}
+  .switch input{opacity:0;width:0;height:0}
+  .slider{position:absolute;inset:0;background:#383838;border-radius:24px;transition:.3s}
+  .slider::before{content:'';position:absolute;width:18px;height:18px;right:3px;top:3px;background:white;border-radius:50%;transition:.3s}
+  input:checked + .slider{background:var(--red)}
+  input:checked + .slider::before{transform:translateX(-18px)}
+  .search-bar{
+    background:var(--card);border:1px solid var(--border);border-radius:14px;
+    padding:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+    margin-bottom:14px
+  }
+  .search-input-wrap{flex:1;min-width:220px;position:relative;display:flex;align-items:center}
+  .search-input-wrap svg{position:absolute;right:12px;width:16px;height:16px;fill:var(--muted);pointer-events:none}
+  .search-input-wrap input{
+    width:100%;background:#0f0f0f;color:var(--text);border:1px solid var(--border2);
+    border-radius:10px;padding:10px 12px 10px 36px;font-family:inherit;font-size:13px;outline:none;transition:.2s
+  }
+  .search-input-wrap input:focus{border-color:var(--red);background:#151515}
+  .search-input-wrap input::placeholder{color:#555}
+  .search-bar select{
+    background:#0f0f0f;color:var(--text);border:1px solid var(--border2);border-radius:10px;
+    padding:10px 12px;font-family:inherit;font-size:13px;min-width:150px;outline:none
+  }
+  .search-bar select:focus{border-color:var(--red)}
+  .fav-check{
+    display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;
+    background:#0f0f0f;border:1px solid var(--border2);border-radius:10px;padding:9px 12px;user-select:none;transition:.2s
+  }
+  .fav-check:hover{border-color:#3a3a1a;background:#151505}
+  .fav-check input{accent-color:var(--red);width:14px;height:14px}
+  .fav-check svg{width:14px;height:14px;fill:#ffaa00}
+  .btn-reset{
+    background:#0f0f0f;color:var(--muted);border:1px solid var(--border2);padding:9px 16px;border-radius:10px;
+    font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;transition:.2s;white-space:nowrap;display:flex;align-items:center;gap:6px
+  }
+  .btn-reset:hover{background:#1a0f0f;color:#ff6b6b;border-color:#3a1e1e}
+  .btn-reset svg{width:14px;height:14px;fill:currentColor}
+  .preview-section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;margin-bottom:14px}
+  .preview-section h3{font-size:13px;margin-bottom:10px;display:flex;align-items:center;gap:8px;font-weight:700}
+  .preview-section h3 svg{width:16px;height:16px;fill:var(--muted)}
+  .preview-section h3 span{color:var(--red)}
+  .live-preview{
+    background:#0f0f0f;border-radius:12px;padding:20px;border:1px solid var(--border);
+    text-align:center;min-height:90px;display:flex;flex-direction:column;gap:6px;align-items:center;justify-content:center
+  }
+  .live-preview .main{font-size:22px;line-height:1.7;letter-spacing:-0.01em;-webkit-font-smoothing:antialiased}
+  .live-preview .sub{font-size:12px;color:var(--muted)}
+  .hint{font-size:11px;color:#e6a23c;background:#1e1605;border:1px solid #3a2a0a;padding:9px 10px;border-radius:8px;margin-top:10px;display:none;align-items:center;gap:7px;line-height:1.6}
+  .hint.show{display:flex}
+  .hint svg{width:14px;height:14px;fill:#e6a23c;flex-shrink:0}
+  .hint-note{margin-top:8px;font-size:11px;color:var(--muted2);line-height:1.6;display:flex;align-items:center;gap:6px}
+  .hint-note svg{width:12px;height:12px;fill:var(--muted2)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+  .card{
+    background:var(--card);border:2px solid var(--border);border-radius:16px;padding:14px;
+    cursor:pointer;transition:all .2s;position:relative;display:flex;flex-direction:column
+  }
+  .card:hover{border-color:#333;transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,0.25)}
+  .card.selected{border-color:var(--red);background:#1e1414;box-shadow:0 0 0 1px var(--red), 0 8px 24px rgba(255,0,0,0.1)}
+  .card.selected::after{
+    content:'';position:absolute;top:10px;left:10px;width:22px;height:22px;
+    background:var(--red);border-radius:50%;z-index:1;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+    background-size:14px;background-repeat:no-repeat;background-position:center
+  }
+  .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:10px;padding-right:2px}
+  .card-top-left{flex:1;min-width:0}
+  .card-title{font-size:14px;font-weight:800;display:flex;align-items:center;gap:6px;flex-wrap:wrap;line-height:1.3}
+  .card-en{font-size:11px;color:var(--muted);margin-top:2px;direction:ltr;text-align:right}
+  .card-cat{font-size:10px;background:#252525;padding:3px 8px;border-radius:20px;color:var(--muted);white-space:nowrap;flex-shrink:0;border:1px solid var(--border);display:flex;align-items:center;gap:4px}
+  .card-cat svg{width:10px;height:10px;fill:var(--muted)}
+  .card.selected .card-cat{background:var(--red);color:white;border-color:var(--red)}
+  .card.selected .card-cat svg{fill:white}
+  .card-preview{
+    background:#0f0f0f;border-radius:10px;padding:14px;text-align:center;
+    font-size:19px;line-height:1.6;min-height:66px;display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--border);margin-bottom:8px;word-break:break-word;
+    -webkit-font-smoothing:antialiased;flex:1
+  }
+  .card-desc{font-size:11px;color:#777;line-height:1.5;min-height:30px}
+  .card-actions{margin-top:10px;display:flex;justify-content:flex-end}
+  .fav-btn{
+    background:#0f0f0f;border:1px solid var(--border2);padding:6px 12px;border-radius:20px;
+    font-size:11px;font-weight:600;cursor:pointer;transition:.2s;display:flex;align-items:center;gap:5px;color:var(--muted)
+  }
+  .fav-btn:hover{border-color:#3a3000;background:#1a1505;color:#ffaa00}
+  .fav-btn.active{background:#ffaa00;border-color:#ffaa00;color:#000}
+  .fav-btn svg{width:12px;height:12px;fill:currentColor}
+  .popular-badge{font-size:9px;background:linear-gradient(135deg,#ff6a00,#53FC18);color:white;padding:2px 7px;border-radius:20px;font-weight:700;display:inline-flex;align-items:center;gap:3px}
+  .popular-badge svg{width:10px;height:10px;fill:white}
+  .about{margin-top:26px;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;text-align:center}
+  .about h3{font-size:15px;margin-bottom:6px;display:flex;align-items:center;justify-content:center;gap:7px}
+  .about h3 svg{width:16px;height:16px;fill:var(--muted)}
+  .about p{font-size:12px;color:var(--muted);margin-bottom:14px;line-height:1.6}
+  .links{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+  .links a{
+    text-decoration:none;color:var(--text);background:#0f0f0f;border:1px solid var(--border2);
+    padding:8px 14px;border-radius:10px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px;transition:.2s
+  }
+  .links a:hover{border-color:var(--red);background:#1a1a1a;transform:translateY(-1px)}
+  .links a.yt{border-color:#2a1a1a}
+  .links a.yt:hover{background:var(--red);color:white;border-color:var(--red)}
+  .links a svg{width:14px;height:14px;fill:currentColor}
+  .toast{
+    position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(100px);
+    background:var(--card);color:var(--text);border:1px solid var(--border2);padding:11px 16px;border-radius:12px;
+    font-size:12px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,0.4);opacity:0;transition:.3s;z-index:100;pointer-events:none;display:flex;align-items:center;gap:8px
+  }
+  .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+  .toast svg{width:16px;height:16px;fill:var(--red)}
+  @media(max-width:900px){
+    .settings-bar{grid-template-columns:150px 1fr 1fr}
+    .settings-bar .setting:last-child{grid-column:1 / -1}
+  }
+  @media(max-width:640px){
+    .settings-bar{grid-template-columns:1fr 1fr;gap:10px}
+    .toggle-wrap{grid-column:1 / -1;height:auto;padding:12px}
+    .search-bar{flex-direction:column;align-items:stretch;gap:8px}
+    .search-input-wrap{min-width:unset;width:100%}
+    .search-bar select,.fav-check,.btn-reset{width:100%;justify-content:center}
+    .grid{grid-template-columns:1fr}
+    .navbar h1{font-size:22px}
+    .container{padding:16px 12px}
+    .card-preview{font-size:17px}
+  }
+</style>
+</head>
+<body>
+  <div class="navbar">
+    <h1>
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+      Kick Persian - font
+    </h1>
+    <p>بیش از ۲۰ فونت فارسی زیبا برای کیک — فقط متن فارسی تغییر می‌کند</p>
+    <div class="badge">
+      <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      برنامه‌نویس: TheAzizi
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="settings-bar">
+      <div class="toggle-wrap">
+        <span>
+          <svg viewBox="0 0 24 24"><path d="M17 7h-2.5l-1-1h-5l-1 1H7c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm-2 11H9v-2h6v2z"/></svg>
+          فعال
+        </span>
+        <label class="switch" style="margin:0"><input type="checkbox" id="enabledToggle" checked><span class="slider"></span></label>
+      </div>
+      <div class="setting">
+        <label>
+          <svg viewBox="0 0 24 24"><path d="M11 7h2v2h-2V7zm0 4h2v6h-2v-6zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+          ضخامت فونت
+        </label>
+        <select id="weightSelect">
+          <option value="300">نازک (300)</option>
+          <option value="400" selected>معمولی (400)</option>
+          <option value="500">متوسط (500)</option>
+          <option value="700">ضخیم (700)</option>
+          <option value="800">خیلی ضخیم (800)</option>
+          <option value="900">سنگین (900)</option>
+        </select>
+      </div>
+      <div class="setting">
+        <label>
+          <svg viewBox="0 0 24 24"><path d="M9 4v3H5v12h3v3H2v-3h3V7H2V4h7zm10 0v3h-3v12h3v3h-6v-3h3V7h-3V4h6z"/></svg>
+          اندازه فونت
+        </label>
+        <select id="sizeSelect">
+          <option value="90">کوچک 90%</option>
+          <option value="100" selected>معمولی 100%</option>
+          <option value="110">بزرگ 110%</option>
+          <option value="120">خیلی بزرگ 120%</option>
+          <option value="130">غول‌پیکر 130%</option>
+        </select>
+      </div>
+      <div class="setting">
+        <label>
+          <svg viewBox="0 0 24 24"><path d="M5 17v2h14v-2H5zm4.5-4.2h5l.9 2.2h2.1L12 2 6.5 15h2.1l.9-2.2zM6 17h12v2H6z"/></svg>
+          فونت فعلی
+        </label>
+        <select id="quickSelect"></select>
+      </div>
+    </div>
+
+    <div class="search-bar">
+      <div class="search-input-wrap">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input type="text" id="searchInput" placeholder="جستجو فونت (مثلاً وزیر، شبنم، ساحل...)">
+      </div>
+      <select id="categoryFilter">
+        <option value="all">همه دسته‌ها</option>
+        <option value="سن‌سریف مدرن">سن‌سریف مدرن</option>
+        <option value="سن‌سریف">سن‌سریف</option>
+        <option value="سریف">سریف</option>
+        <option value="نمایشی">نمایشی</option>
+        <option value="دست‌نویس">دست‌نویس</option>
+      </select>
+      <label class="fav-check">
+        <input type="checkbox" id="favFilter">
+        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        فقط علاقه‌مندی‌ها
+      </label>
+      <button id="resetBtn" class="btn-reset">
+        <svg viewBox="0 0 24 24"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+        بازنشانی
+      </button>
+    </div>
+
+    <div class="preview-section">
+      <h3>
+        <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+        پیش‌نمایش زنده <span id="currentName"></span>
+      </h3>
+      <div class="live-preview" id="livePreview">
+        <div class="main" id="liveMain">سلام دنیا! به کیک فارسی خوش اومدی</div>
+        <div class="sub" id="liveSub">این یک متن نمونه برای نمایش فونت انتخابی شماست — Kick Comments, Titles & Descriptions</div>
+      </div>
+      <div id="weightHint" class="hint">
+        <svg viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+        <span></span>
+      </div>
+      <div class="hint-note">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+        بهبودها: وزن هوشمند، تشخیص دقیق ZWNJ، عدم اعمال روی آیکن، لود بهینه و فال‌بک CDN
+      </div>
+    </div>
+
+    <div class="grid" id="fontGrid"></div>
+
+    <div class="about">
+      <h3>
+        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        درباره سازنده
+      </h3>
+      <p>این پلاگین با افتخار توسط <b style="color:#ff3b3b">TheAzizi</b> ساخته شده — متن انگلیسی بدون تغییر می‌ماند</p>
+      <div class="links">
+        <a class="yt" href="https://www.youtube.com/@AziziWC" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M10 8v8l5-4z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+          Kick — AziziWC
+        </a>
+        <a class="yt" href="https://www.youtube.com/@The_azizi" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M10 8v8l5-4z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+          Kick — The_azizi
+        </a>
+        <a href="https://t.me/luluch_code" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm9.5 7.5l-2.5 1.2-1.1-.9 1.1-1.1 2.5 0.8zm-3.5 3l-6 3.5-2-2 8-4.5.5 1-6 2.5 1.5 1 4.5-2.5.5 1z"/></svg>
+          تلگرام
+        </a>
+        <a href="https://x.com/the_azzi" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          ایکس
+        </a>
+        <a href="https://github.com/TheGreatAzizi" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.09.68-.22.68-.49v-1.7c-2.78.61-3.37-1.19-3.37-1.19-.45-1.16-1.11-1.47-1.11-1.47-.91-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.3.1-2.7 0 0 .84-.27 2.75 1.05A9.2 9.2 0 0112 7.31c.85 0 1.71.12 2.51.34 1.91-1.32 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.64 1.03 2.76 0 3.95-2.34 4.82-4.57 5.08.36.32.68.94.68 1.9v2.82c0 .27.18.59.69.49A10.26 10.26 0 0022 12.26C22 6.58 17.52 2 12 2z"/></svg>
+          گیت‌هاب
+        </a>
+      </div>
+      <p style="margin-top:16px;font-size:11px;color:#555">Kick Persian - font v2.2.0 پایدار | فقط متن‌های حاوی حروف فارسی/عربی تغییر می‌کنند | ۲۰+ فونت</p>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">
+    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+    <span></span>
+  </div>
+
+<script src="fonts.js"></script>
+<script src="options.js"></script>
+</body>
+</html>
+
+

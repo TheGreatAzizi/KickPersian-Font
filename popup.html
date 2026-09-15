@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kick Persian - font</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{width:360px;font-family:'Vazirmatn',Tahoma,sans-serif;background:#0f0f0f;color:#f1f1f1;direction:rtl}
+  .header{
+    background:linear-gradient(135deg,#53FC18 0%,#1a8a00 100%);
+    padding:16px;text-align:center;position:relative;overflow:hidden
+  }
+  .header::before{content:'';position:absolute;inset:0;background:linear-gradient(45deg,transparent 30%,rgba(255,255,255,0.08) 50%,transparent 70%)}
+  .header h1{font-size:22px;font-weight:800;letter-spacing:0.5px;position:relative;display:flex;align-items:center;justify-content:center;gap:8px}
+  .header h1 svg{width:22px;height:22px;fill:white}
+  .header p{font-size:11px;opacity:0.9;margin-top:2px;position:relative}
+  .header .by{font-size:10px;opacity:0.85;margin-top:6px;background:rgba(0,0,0,0.2);display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:20px;position:relative}
+  .header .by svg{width:12px;height:12px;fill:white;opacity:0.9}
+  .ver{position:absolute;top:8px;left:10px;font-size:9px;background:rgba(0,0,0,0.3);padding:2px 6px;border-radius:20px;z-index:1}
+  .content{padding:16px}
+  .toggle-row{display:flex;align-items:center;justify-content:space-between;background:#212121;border:1px solid #2a2a2a;border-radius:12px;padding:12px 14px;margin-bottom:14px}
+  .toggle-row span{font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px}
+  .toggle-row span svg{width:16px;height:16px;fill:#aaa}
+  .switch{position:relative;width:44px;height:24px;cursor:pointer;flex-shrink:0}
+  .switch input{opacity:0;width:0;height:0}
+  .slider{position:absolute;inset:0;background:#383838;border-radius:24px;transition:.3s}
+  .slider::before{content:'';position:absolute;width:18px;height:18px;right:3px;top:3px;background:white;border-radius:50%;transition:.3s}
+  input:checked + .slider{background:#53FC18}
+  input:checked + .slider::before{transform:translateX(-20px)}
+  label{font-size:11px;font-weight:600;color:#aaa;margin-bottom:6px;display:flex;align-items:center;gap:5px}
+  label svg{width:12px;height:12px;fill:#888}
+  select, .preview-box{width:100%;background:#1a1a1a;color:#f1f1f1;border:1px solid #303030;border-radius:10px;padding:10px 12px;font-family:inherit;font-size:13px;outline:none;transition:.2s}
+  select:focus{border-color:#53FC18;background:#212121}
+  select{cursor:pointer}
+  .preview-box{
+    min-height:72px;margin-top:8px;display:flex;align-items:center;justify-content:center;
+    text-align:center;font-size:18px;line-height:1.6;background:#1a1a1a;word-break:break-word;
+    -webkit-font-smoothing:antialiased;border:1px solid #2a2a2a
+  }
+  .controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+  .control-group label{font-size:11px}
+  .control-group select{padding:8px 10px;font-size:12px}
+  .hint{font-size:10px;color:#ffaa55;margin-top:6px;display:none;background:#1e1505;border:1px solid #3a2a0a;padding:7px 9px;border-radius:8px;line-height:1.5;align-items:center;gap:6px}
+  .hint.show{display:flex}
+  .hint svg{width:12px;height:12px;fill:#ffaa55;flex-shrink:0}
+  .status{margin-top:12px;padding:9px 10px;border-radius:8px;font-size:11px;text-align:center;display:none;align-items:center;justify-content:center;gap:6px}
+  .status.show{display:flex}
+  .status.success{background:#0f1f0f;color:#7ec87e;border:1px solid #1e3a1e}
+  .status.error{background:#1f0f0f;color:#e88;border:1px solid #3a1e1e}
+  .status svg{width:14px;height:14px;flex-shrink:0}
+  .btn-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+  .btn-options,.btn-reset{
+    padding:9px 10px;border-radius:10px;font-family:inherit;font-size:11px;font-weight:600;cursor:pointer;transition:.2s;border:1px solid #333;
+    display:flex;align-items:center;justify-content:center;gap:6px
+  }
+  .btn-options{background:#212121;color:#f1f1f1;border-color:#333}
+  .btn-options:hover{background:#2a2a2a;border-color:#53FC18}
+  .btn-options svg{width:14px;height:14px;fill:#f1f1f1}
+  .btn-reset{background:#1a1a1a;color:#aaa;border-color:#2a2a2a}
+  .btn-reset:hover{background:#221111;color:#ff6b6b;border-color:#3a1e1e}
+  .btn-reset svg{width:14px;height:14px;fill:currentColor}
+  .footer{padding:14px 16px;border-top:1px solid #1f1f1f;display:flex;gap:6px;flex-wrap:wrap;justify-content:center;background:#0a0a0a}
+  .footer a{
+    font-size:10px;color:#999;text-decoration:none;background:#1a1a1a;
+    padding:6px 10px;border-radius:20px;border:1px solid #2a2a2a;display:flex;align-items:center;gap:5px;transition:.2s
+  }
+  .footer a:hover{color:#fff;border-color:#53FC18;background:#212121}
+  .footer a svg{width:12px;height:12px;fill:currentColor}
+  .links-title{width:100%;text-align:center;font-size:10px;color:#666;margin-bottom:4px;letter-spacing:0.5px}
+</style>
+</head>
+<body>
+  <div class="header">
+    <span class="ver">v2.2.0</span>
+    <h1>
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+      Kick Persian - font
+    </h1>
+    <p>فونت فارسی دلخواه برای کیک</p>
+    <div class="by">
+      <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      برنامه‌نویس: TheAzizi
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="toggle-row">
+      <span>
+        <svg viewBox="0 0 24 24"><path d="M17 7h-2.5l-1-1h-5l-1 1H7c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zM12 17c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+        فعال‌سازی پلاگین
+      </span>
+      <label class="switch" style="margin:0">
+        <input type="checkbox" id="enabledToggle" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <label for="fontSelect">
+      <svg viewBox="0 0 24 24"><path d="M5 17v2h14v-2H5zm4.5-4.2h5l.9 2.2h2.1L12 2 6.5 15h2.1l.9-2.2zM12 11.1L13.3 14h-2.6L12 11.1z"/></svg>
+      انتخاب فونت فارسی:
+    </label>
+    <select id="fontSelect"></select>
+    <div id="weightHint" class="hint">
+      <svg viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+      <span></span>
+    </div>
+
+    <div id="preview" class="preview-box">سلام کیک! این پیش‌نمایش فونت است</div>
+
+    <div class="controls">
+      <div class="control-group">
+        <label for="weightSelect">
+          <svg viewBox="0 0 24 24"><path d="M9 4v1.38c-.83-.33-1.72-.5-2.61-.5-1.4 0-2.85.59-3.39 1.73l1.36 1.09C4.9 6.9 5.95 6.5 7 6.5c.87 0 1.66.26 2 .6v8.36c-.46.34-1.2.58-2 .58-1.2 0-2.3-.43-2.7-1.18l-1.35 1.07C4.3 16.9 5.85 17.5 7.39 17.5c.95 0 1.9-.2 2.61-.57V18h2V4H9z"/></svg>
+          ضخامت
+        </label>
+        <select id="weightSelect">
+          <option value="300">نازک (300)</option>
+          <option value="400" selected>معمولی (400)</option>
+          <option value="500">متوسط (500)</option>
+          <option value="700">ضخیم (700)</option>
+          <option value="800">خیلی ضخیم (800)</option>
+          <option value="900">سنگین (900)</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label for="sizeSelect">
+          <svg viewBox="0 0 24 24"><path d="M9 4v3H5v12h3v3H2v-3h3V7H2V4h7zm10 0v3h-3v12h3v3h-6v-3h3V7h-3V4h6z"/></svg>
+          اندازه
+        </label>
+        <select id="sizeSelect">
+          <option value="90">کوچک (90%)</option>
+          <option value="100" selected>معمولی (100%)</option>
+          <option value="110">بزرگ (110%)</option>
+          <option value="120">خیلی بزرگ (120%)</option>
+          <option value="130">غول‌پیکر (130%)</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="status" class="status"></div>
+    <div class="btn-row">
+      <button id="openOptions" class="btn-options">
+        <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94s-.02-.64-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94L14.4 2.81c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.44.17-.47.41l-.39 2.54c-.6.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.3-.06.61-.06.94s.02.64.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.39 2.54c.03.24.23.41.47.41h3.84c.24 0 .44-.17.47-.41l.39-2.54c.6-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.03-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+        تنظیمات کامل
+      </button>
+      <button id="resetBtn" class="btn-reset">
+        <svg viewBox="0 0 24 24"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+        بازنشانی
+      </button>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="links-title">لینک‌های TheAzizi</div>
+    <a href="https://www.youtube.com/@AziziWC" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+      AziziWC
+    </a>
+    <a href="https://www.youtube.com/@The_azizi" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+      The_azizi
+    </a>
+    <a href="https://t.me/luluch_code" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75l-.88-.72c-.49-.42-.83-.93-.39-1.53l1.48-2.23c.2-.3.1-.44-.22-.2l-1.95 1.64c-.3.25-.54.28-.86.1l-1.36-.63c-.34-.16-.37-.46-.08-.69l5.2-2.54c.35-.15.62-.07.8.18l.96 1.76c.15.28.44.44.74.33l1.5-.6c.45-.18.47-.45.11-.68L16.64 8.8z"/></svg>
+      تلگرام
+    </a>
+    <a href="https://x.com/the_azzi" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      ایکس
+    </a>
+    <a href="https://github.com/TheGreatAzizi" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.09.68-.22.68-.49v-1.7c-2.78.61-3.37-1.19-3.37-1.19-.45-1.16-1.11-1.47-1.11-1.47-.91-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.3.1-2.7 0 0 .84-.27 2.75 1.05A9.2 9.2 0 0112 7.31c.85 0 1.71.12 2.51.34 1.91-1.32 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.64 1.03 2.76 0 3.95-2.34 4.82-4.57 5.08.36.32.68.94.68 1.9v2.82c0 .27.18.59.69.49A10.26 10.26 0 0022 12.26C22 6.58 17.52 2 12 2z"/></svg>
+      گیت‌هاب
+    </a>
+  </div>
+
+<script src="fonts.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>
+
+
